@@ -200,7 +200,7 @@ export function VideoIntro() {
               onTimeUpdate={(event) => handleVideoProgress(index, event)}
               onEnded={swapVideos}
             >
-              <source src="/imagens/croaassaint_video.mp4" type="video/mp4" />
+              <source src="/imagens/croaassaint_video_comprimido.webm" type="video/webm" />
             </video>
           ))
         ) : (
