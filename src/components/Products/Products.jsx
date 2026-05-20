@@ -5,7 +5,7 @@ import { buildWhatsappLink } from '../../utils/buildWhatsappLink';
 
 export function Products() {
   return (
-    <section id="produtos" className="section">
+    <section id="produtos" className="section deferred-section">
       <div className="container">
         <div className="section-heading">
           <span className="section-kicker">Nossos produtos</span>
@@ -25,14 +25,16 @@ export function Products() {
 
             return (
               <article className="product-card" key={product.titulo}>
-                <div
-                  className="product-image"
-                  role="img"
-                  aria-label={product.titulo}
-                  style={{
-                    backgroundImage: `linear-gradient(rgba(58, 35, 23, 0.12), rgba(58, 35, 23, 0.3)), url('${product.imagem}')`,
-                  }}
-                />
+                <div className="product-image">
+                  <img
+                    src={product.imagem}
+                    alt={product.titulo}
+                    loading="lazy"
+                    decoding="async"
+                    width="960"
+                    height="1440"
+                  />
+                </div>
                 <div className="product-content">
                   <h3>{product.titulo}</h3>
                   <p>{product.descricao}</p>

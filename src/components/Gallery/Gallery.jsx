@@ -2,7 +2,7 @@ import { gallery } from '../../data/gallery';
 
 export function Gallery() {
   return (
-    <section className="section gallery-section">
+    <section className="section gallery-section deferred-section">
       <div className="container">
         <div className="section-heading">
           <span className="section-kicker">Galeria</span>
@@ -15,18 +15,20 @@ export function Gallery() {
 
         <div className="gallery-grid">
           {gallery.map((item, index) => (
-            <div
-              className="gallery-item"
-              key={item.alt}
-              role="img"
-              aria-label={item.alt}
-              style={{
-                backgroundImage: `linear-gradient(180deg, transparent, rgba(58, 35, 23, 0.78)), url('${item.imagem}')`,
-              }}
-            >
-              <span>{String(index + 1).padStart(2, '0')}</span>
-              <small>{item.alt}</small>
-            </div>
+            <figure className="gallery-item" key={item.alt}>
+              <img
+                src={item.imagem}
+                alt={item.alt}
+                loading="lazy"
+                decoding="async"
+                width="960"
+                height="1440"
+              />
+              <figcaption className="gallery-caption">
+                <span>{String(index + 1).padStart(2, '0')}</span>
+                <small>{item.alt}</small>
+              </figcaption>
+            </figure>
           ))}
         </div>
       </div>

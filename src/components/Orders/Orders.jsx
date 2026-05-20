@@ -9,7 +9,7 @@ export function Orders() {
   );
 
   return (
-    <section id="encomendas" className="section orders-section">
+    <section id="encomendas" className="section orders-section deferred-section">
       <div className="container orders-card">
         <div>
           <span className="section-kicker">Encomendas</span>

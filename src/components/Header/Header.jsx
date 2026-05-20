@@ -21,7 +21,14 @@ export function Header() {
       <div className="container header-content">
         <a href="#inicio" className="brand" aria-label="Ir para o início">
           <span className="brand-icon">
-            <img src="/imagens/logo.png" alt={`Logo da ${businessInfo.nome}`} />
+            <img
+              src="/imagens/optimized/logo-256.png"
+              alt={`Logo da ${businessInfo.nome}`}
+              width="256"
+              height="256"
+              fetchPriority="high"
+              decoding="async"
+            />
           </span>
           <span>{businessInfo.nome}</span>
         </a>

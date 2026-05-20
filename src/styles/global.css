@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap');
-
 :root {
   --brown: #5a3825;
   --brown-dark: #3a2317;
@@ -54,6 +52,11 @@ img {
 
 .section {
   padding: 88px 0;
+}
+
+.deferred-section {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 900px;
 }
 
 .section-kicker {
@@ -235,6 +238,10 @@ img {
   opacity: 1;
 }
 
+.video-intro-poster {
+  transition: none;
+}
+
 .video-intro-overlay {
   background:
     linear-gradient(
@@ -398,7 +405,7 @@ img {
   overflow: hidden;
   background:
     linear-gradient(rgba(58, 35, 23, 0.12), rgba(58, 35, 23, 0.24)),
-    url('/imagens/breakfast.jpg') center / cover,
+    url('/imagens/optimized/breakfast-1600.jpg') center / cover,
     linear-gradient(135deg, #f2c078, #8d5b35);
   border: 14px solid var(--white);
   border-radius: 42px;
@@ -446,10 +453,23 @@ img {
 }
 
 .product-image {
+  position: relative;
   height: 190px;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+  overflow: hidden;
+  background: linear-gradient(135deg, rgba(216, 155, 76, 0.18), rgba(58, 35, 23, 0.2));
+}
+
+.product-image::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(rgba(58, 35, 23, 0.08), rgba(58, 35, 23, 0.28));
+}
+
+.product-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .product-content {
@@ -546,14 +566,6 @@ img {
   box-shadow: var(--shadow);
 }
 
-.about-video {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
 .about-list {
   display: grid;
   gap: 12px;
@@ -575,25 +587,38 @@ img {
 }
 
 .gallery-item {
-  display: grid;
+  position: relative;
+  overflow: hidden;
   min-height: 220px;
-  align-content: end;
-  gap: 6px;
-  padding: 20px;
-  color: var(--white);
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+  margin: 0;
   border-radius: 26px;
   box-shadow: 0 12px 30px rgba(58, 35, 23, 0.08);
 }
 
-.gallery-item span {
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  min-height: 220px;
+  object-fit: cover;
+}
+
+.gallery-caption {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  align-content: end;
+  gap: 6px;
+  padding: 20px;
+  color: var(--white);
+  background: linear-gradient(180deg, transparent, rgba(58, 35, 23, 0.78));
+}
+
+.gallery-caption span {
   font-size: 2rem;
   font-weight: 900;
 }
 
-.gallery-item small {
+.gallery-caption small {
   font-weight: 800;
 }
 

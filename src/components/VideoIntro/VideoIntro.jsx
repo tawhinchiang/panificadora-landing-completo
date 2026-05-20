@@ -9,6 +9,22 @@ export function VideoIntro() {
   const transitionRef = useRef(false);
   const resetTimerRef = useRef(0);
   const [activeVideo, setActiveVideo] = useState(0);
+  const [mediaMode, setMediaMode] = useState('static');
+
+  useEffect(() => {
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const compactScreen = window.matchMedia('(max-width: 920px)').matches;
+    const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+    const saveData = connection?.saveData;
+    const slowConnection = ['slow-2g', '2g', '3g'].includes(connection?.effectiveType);
+
+    if (reducedMotion || compactScreen || saveData || slowConnection) {
+      setMediaMode('static');
+      return;
+    }
+
+    setMediaMode('video');
+  }, []);
 
   const playVideo = (video) => {
     if (!video) {
@@ -63,6 +79,10 @@ export function VideoIntro() {
   };
 
   useEffect(() => {
+    if (mediaMode !== 'video') {
+      return undefined;
+    }
+
     const section = sectionRef.current;
 
     if (!section) {
@@ -109,9 +129,13 @@ export function VideoIntro() {
       window.removeEventListener('scroll', requestUpdate);
       window.removeEventListener('resize', requestUpdate);
     };
-  }, []);
+  }, [mediaMode]);
 
   useEffect(() => {
+    if (mediaMode !== 'video') {
+      return undefined;
+    }
+
     const primaryVideo = videoRefs.current[0];
     const secondaryVideo = videoRefs.current[1];
 
@@ -138,7 +162,7 @@ export function VideoIntro() {
       primaryVideo.pause();
       secondaryVideo.pause();
     };
-  }, []);
+  }, [mediaMode]);
 
   const handleVideoProgress = (index, event) => {
     if (index !== activeVideoRef.current || transitionRef.current) {
@@ -159,24 +183,38 @@ export function VideoIntro() {
   return (
     <section id="inicio" ref={sectionRef} className="video-intro">
       <div className="video-intro-sticky">
-        {[0, 1].map((index) => (
-          <video
-            key={index}
-            ref={(element) => {
-              videoRefs.current[index] = element;
-            }}
-            className={`video-intro-media ${activeVideo === index ? 'is-active' : ''}`}
-            autoPlay={index === 0}
-            muted
-            playsInline
-            preload="auto"
+        {mediaMode === 'video' ? (
+          [0, 1].map((index) => (
+            <video
+              key={index}
+              ref={(element) => {
+                videoRefs.current[index] = element;
+              }}
+              className={`video-intro-media ${activeVideo === index ? 'is-active' : ''}`}
+              autoPlay={index === 0}
+              muted
+              playsInline
+              preload={index === 0 ? 'metadata' : 'none'}
+              poster="/imagens/optimized/breakfast-1600.jpg"
+              aria-hidden="true"
+              onTimeUpdate={(event) => handleVideoProgress(index, event)}
+              onEnded={swapVideos}
+            >
+              <source src="/imagens/croaassaint_video.mp4" type="video/mp4" />
+            </video>
+          ))
+        ) : (
+          <img
+            className="video-intro-media video-intro-poster is-active"
+            src="/imagens/optimized/breakfast-1600.jpg"
+            alt=""
             aria-hidden="true"
-            onTimeUpdate={(event) => handleVideoProgress(index, event)}
-            onEnded={swapVideos}
-          >
-            <source src="/imagens/croaassaint_video.mp4" type="video/mp4" />
-          </video>
-        ))}
+            fetchPriority="high"
+            decoding="async"
+            width="1600"
+            height="2400"
+          />
+        )}
 
         <div className="video-intro-overlay" aria-hidden="true" />
         <div className="video-intro-glow" aria-hidden="true" />

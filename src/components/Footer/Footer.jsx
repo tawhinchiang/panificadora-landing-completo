@@ -14,7 +14,14 @@ export function Footer() {
         <div>
           <a href="#inicio" className="brand footer-brand">
             <span className="brand-icon">
-              <img src="/imagens/logo.png" alt={`Logo da ${businessInfo.nome}`} />
+              <img
+                src="/imagens/optimized/logo-256.png"
+                alt={`Logo da ${businessInfo.nome}`}
+                width="256"
+                height="256"
+                loading="lazy"
+                decoding="async"
+              />
             </span>
             <span>{businessInfo.nome}</span>
           </a>

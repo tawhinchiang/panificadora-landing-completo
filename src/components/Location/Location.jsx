@@ -3,7 +3,7 @@ import { businessInfo } from '../../data/businessInfo';
 
 export function Location() {
   return (
-    <section id="localizacao" className="section location-section">
+    <section id="localizacao" className="section location-section deferred-section">
       <div className="container location-grid">
         <div>
           <span className="section-kicker">Localização</span>

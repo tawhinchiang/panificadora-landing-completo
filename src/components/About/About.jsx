@@ -2,18 +2,9 @@ import { Heart, Sparkles, Wheat } from 'lucide-react';
 
 export function About() {
   return (
-    <section id="sobre" className="section about-section">
+    <section id="sobre" className="section about-section deferred-section">
       <div className="container about-grid">
-        <div className="about-image">
-          <video
-            className="about-video"
-            src="/imagens/croaassaint_video.mp4"
-            autoPlay
-            muted
-            loop
-            playsInline
-          />
-        </div>
+        <div className="about-image" aria-hidden="true" />
 
         <div className="about-text">
           <span className="section-kicker">Sobre nós</span>
