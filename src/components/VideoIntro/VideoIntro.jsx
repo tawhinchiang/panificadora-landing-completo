@@ -13,12 +13,11 @@ export function VideoIntro() {
 
   useEffect(() => {
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const compactScreen = window.matchMedia('(max-width: 920px)').matches;
     const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
     const saveData = connection?.saveData;
     const slowConnection = ['slow-2g', '2g', '3g'].includes(connection?.effectiveType);
 
-    if (reducedMotion || compactScreen || saveData || slowConnection) {
+    if (reducedMotion || saveData || slowConnection) {
       setMediaMode('static');
       return;
     }
