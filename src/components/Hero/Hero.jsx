@@ -9,11 +9,11 @@ export function Hero() {
   );
 
   return (
-    <section id="inicio" className="hero section">
+    <section id="hero" className="hero section">
       <div className="container hero-grid">
         <div className="hero-text">
           <span className="section-kicker">Produção diária</span>
-          <h1>{businessInfo.slogan}</h1>
+          <h1>{businessInfo.nome}</h1>
           <p>{businessInfo.subtitulo}</p>
 
           <div className="hero-actions">

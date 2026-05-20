@@ -1,5 +1,6 @@
 import { Header } from './components/Header/Header';
 import { Hero } from './components/Hero/Hero';
+import { VideoIntro } from './components/VideoIntro/VideoIntro';
 import { Products } from './components/Products/Products';
 import { Orders } from './components/Orders/Orders';
 import { About } from './components/About/About';
@@ -13,6 +14,7 @@ export default function App() {
     <>
       <Header />
       <main>
+        <VideoIntro />
         <Hero />
         <Products />
         <Orders />
