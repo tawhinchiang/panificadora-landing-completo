@@ -20,7 +20,9 @@ export function Header() {
     <header className="site-header">
       <div className="container header-content">
         <a href="#inicio" className="brand" aria-label="Ir para o início">
-          <span className="brand-icon">🥖</span>
+          <span className="brand-icon">
+            <img src="/imagens/logo.png" alt={`Logo da ${businessInfo.nome}`} />
+          </span>
           <span>{businessInfo.nome}</span>
         </a>
 

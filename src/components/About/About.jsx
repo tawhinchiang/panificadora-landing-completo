@@ -5,7 +5,14 @@ export function About() {
     <section id="sobre" className="section about-section">
       <div className="container about-grid">
         <div className="about-image">
-          <span>🍞</span>
+          <video
+            className="about-video"
+            src="/imagens/croaassaint_video.mp4"
+            autoPlay
+            muted
+            loop
+            playsInline
+          />
         </div>
 
         <div className="about-text">

@@ -18,21 +18,15 @@ export const products = [
     mensagem: 'Olá! Gostaria de informações sobre salgados.',
   },
   {
-    titulo: 'Doces',
-    descricao: 'Doces variados para acompanhar seu café ou presentear alguém.',
-    imagem: '/imagens/doces.jpg',
-    mensagem: 'Olá! Gostaria de saber quais doces estão disponíveis.',
+    titulo: 'Misto quente',
+    descricao: 'Lanches preparados na hora para um café rápido e saboroso.',
+    imagem: '/imagens/mistoquente.jpg',
+    mensagem: 'Olá! Gostaria de informações sobre lanches e misto quente.',
   },
   {
     titulo: 'Café da manhã',
     descricao: 'Opções para começar o dia com sabor, qualidade e praticidade.',
-    imagem: '/imagens/cafe.jpg',
+    imagem: '/imagens/breakfast.jpg',
     mensagem: 'Olá! Gostaria de informações sobre opções de café da manhã.',
-  },
-  {
-    titulo: 'Encomendas',
-    descricao: 'Bolos, tortas, salgados e kits para festas, empresas e eventos.',
-    imagem: '/imagens/encomendas.jpg',
-    mensagem: 'Olá! Gostaria de fazer uma encomenda.',
   },
 ];

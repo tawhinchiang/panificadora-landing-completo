@@ -1,26 +1,26 @@
 export const gallery = [
   {
-    imagem: '/imagens/galeria-1.jpg',
-    alt: 'Produtos da panificadora',
+    imagem: '/imagens/paes.jpg',
+    alt: 'Pães frescos saindo todos os dias',
   },
   {
-    imagem: '/imagens/galeria-2.jpg',
-    alt: 'Pães frescos',
+    imagem: '/imagens/bolos.jpg',
+    alt: 'Bolos e tortas para o dia a dia',
   },
   {
-    imagem: '/imagens/galeria-3.jpg',
-    alt: 'Bolos e tortas',
+    imagem: '/imagens/salgados.jpg',
+    alt: 'Salgados variados para qualquer hora',
   },
   {
-    imagem: '/imagens/galeria-4.jpg',
-    alt: 'Salgados variados',
+    imagem: '/imagens/mistoquente.jpg',
+    alt: 'Lanches preparados na hora',
   },
   {
-    imagem: '/imagens/galeria-5.jpg',
-    alt: 'Café da manhã',
+    imagem: '/imagens/breakfast.jpg',
+    alt: 'Opções de café da manhã',
   },
   {
-    imagem: '/imagens/galeria-6.jpg',
+    imagem: '/imagens/faxada_panifi.jpeg',
     alt: 'Fachada da panificadora',
   },
 ];

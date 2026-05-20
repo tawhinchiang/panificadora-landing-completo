@@ -164,6 +164,14 @@ img {
   background: var(--beige);
   border: 1px solid var(--border);
   border-radius: 50%;
+  overflow: hidden;
+}
+
+.brand-icon img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .desktop-menu {
@@ -239,7 +247,7 @@ img {
   overflow: hidden;
   background:
     linear-gradient(rgba(58, 35, 23, 0.12), rgba(58, 35, 23, 0.24)),
-    url('/imagens/hero.jpg') center / cover,
+    url('/imagens/breakfast.jpg') center / cover,
     linear-gradient(135deg, #f2c078, #8d5b35);
   border: 14px solid var(--white);
   border-radius: 42px;
@@ -287,24 +295,10 @@ img {
 }
 
 .product-image {
-  display: grid;
   height: 190px;
-  place-items: center;
-  color: var(--white);
-  background:
-    linear-gradient(rgba(58, 35, 23, 0.15), rgba(58, 35, 23, 0.22)),
-    linear-gradient(135deg, #e3ad6b, #7a492d);
-}
-
-.product-image span {
-  display: grid;
-  width: 70px;
-  height: 70px;
-  place-items: center;
-  background: rgba(255, 255, 255, 0.2);
-  border-radius: 50%;
-  font-size: 2rem;
-  font-weight: 900;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .product-content {
@@ -389,20 +383,24 @@ img {
 }
 
 .about-image {
-  display: grid;
+  position: relative;
+  overflow: hidden;
   min-height: 420px;
-  place-items: center;
   background:
     linear-gradient(rgba(58, 35, 23, 0.12), rgba(58, 35, 23, 0.24)),
-    url('/imagens/galeria-1.jpg') center / cover,
+    url('/imagens/faxada_panifi.jpeg') center / cover,
     linear-gradient(135deg, #e9b774, #8d5b35);
   border: 12px solid var(--white);
   border-radius: 38px;
   box-shadow: var(--shadow);
 }
 
-.about-image span {
-  font-size: 5rem;
+.about-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .about-list {
@@ -432,9 +430,9 @@ img {
   gap: 6px;
   padding: 20px;
   color: var(--white);
-  background:
-    linear-gradient(180deg, transparent, rgba(58, 35, 23, 0.78)),
-    linear-gradient(135deg, #e3ad6b, #7a492d);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
   border-radius: 26px;
   box-shadow: 0 12px 30px rgba(58, 35, 23, 0.08);
 }
@@ -473,21 +471,21 @@ img {
   font-weight: 900;
 }
 
-.map-placeholder {
-  display: grid;
+.map-embed {
   min-height: 360px;
-  place-items: center;
-  align-content: center;
-  gap: 10px;
-  color: var(--brown);
+  overflow: hidden;
   background: var(--white);
   border: 1px solid var(--border);
   border-radius: 34px;
   box-shadow: var(--shadow);
 }
 
-.map-placeholder span {
-  color: var(--muted);
+.map-embed iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 360px;
+  border: 0;
 }
 
 .floating-whatsapp {

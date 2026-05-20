@@ -8,15 +8,23 @@ export function Gallery() {
           <span className="section-kicker">Galeria</span>
           <h2>Um pouco do que preparamos por aqui</h2>
           <p>
-            Substitua essas áreas por fotos reais da panificadora, dos produtos,
-            da fachada e do balcão.
+            Alguns registros da vitrine, dos produtos e da fachada da
+            panificadora.
           </p>
         </div>
 
         <div className="gallery-grid">
           {gallery.map((item, index) => (
-            <div className="gallery-item" key={item.alt}>
-              <span>{index + 1}</span>
+            <div
+              className="gallery-item"
+              key={item.alt}
+              role="img"
+              aria-label={item.alt}
+              style={{
+                backgroundImage: `linear-gradient(180deg, transparent, rgba(58, 35, 23, 0.78)), url('${item.imagem}')`,
+              }}
+            >
+              <span>{String(index + 1).padStart(2, '0')}</span>
               <small>{item.alt}</small>
             </div>
           ))}

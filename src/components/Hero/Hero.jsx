@@ -38,11 +38,11 @@ export function Hero() {
           </div>
         </div>
 
-        <div className="hero-image" role="img" aria-label="Pães fresquinhos da panificadora">
+        <div className="hero-image" role="img" aria-label="Mesa de café da manhã com produtos da panificadora">
           <div className="hero-image-card">
             <span>🥐</span>
             <strong>Fresquinho todo dia</strong>
-            <small>Pães, bolos, salgados e encomendas</small>
+            <small>Pães, bolos, salgados e café da manhã</small>
           </div>
         </div>
       </div>

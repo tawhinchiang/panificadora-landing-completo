@@ -25,9 +25,14 @@ export function Products() {
 
             return (
               <article className="product-card" key={product.titulo}>
-                <div className="product-image">
-                  <span>{product.titulo.charAt(0)}</span>
-                </div>
+                <div
+                  className="product-image"
+                  role="img"
+                  aria-label={product.titulo}
+                  style={{
+                    backgroundImage: `linear-gradient(rgba(58, 35, 23, 0.12), rgba(58, 35, 23, 0.3)), url('${product.imagem}')`,
+                  }}
+                />
                 <div className="product-content">
                   <h3>{product.titulo}</h3>
                   <p>{product.descricao}</p>

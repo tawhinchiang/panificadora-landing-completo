@@ -13,7 +13,9 @@ export function Footer() {
       <div className="container footer-grid">
         <div>
           <a href="#inicio" className="brand footer-brand">
-            <span className="brand-icon">🥖</span>
+            <span className="brand-icon">
+              <img src="/imagens/logo.png" alt={`Logo da ${businessInfo.nome}`} />
+            </span>
             <span>{businessInfo.nome}</span>
           </a>
           <p>{businessInfo.subtitulo}</p>

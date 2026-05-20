@@ -36,10 +36,14 @@ export function Location() {
           </a>
         </div>
 
-        <div className="map-placeholder">
-          <MapPin size={42} />
-          <strong>Google Maps</strong>
-          <span>Incorpore o mapa real aqui depois</span>
+        <div className="map-embed">
+          <iframe
+            src={businessInfo.googleMapsEmbedUrl}
+            title={`Mapa de ${businessInfo.nome}`}
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            allowFullScreen
+          />
         </div>
       </div>
     </section>
