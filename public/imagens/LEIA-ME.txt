@@ -1,0 +1,18 @@
+Coloque aqui as imagens reais da panificadora.
+
+Nomes esperados:
+- hero.jpg
+- paes.jpg
+- bolos.jpg
+- salgados.jpg
+- doces.jpg
+- cafe.jpg
+- encomendas.jpg
+- galeria-1.jpg
+- galeria-2.jpg
+- galeria-3.jpg
+- galeria-4.jpg
+- galeria-5.jpg
+- galeria-6.jpg
+
+Enquanto essas imagens não existirem, o CSS usa degradês como fallback.

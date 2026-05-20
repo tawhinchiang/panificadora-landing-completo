@@ -1,0 +1,26 @@
+Tipo: Landing page estática
+Cliente: Panificadora
+Tecnologia: React + Vite
+Objetivo: Apresentar a empresa e direcionar pedidos para WhatsApp
+
+Módulos:
+1. Header
+2. Banner principal
+3. Produtos
+4. Encomendas
+5. Sobre a panificadora
+6. Galeria
+7. Localização
+8. Botão WhatsApp
+9. Rodapé
+
+Integrações:
+- WhatsApp
+- Google Maps
+- Instagram
+
+Sem necessidade inicial de:
+- Banco de dados
+- API
+- Login
+- Painel administrativo
