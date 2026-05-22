@@ -1266,7 +1266,7 @@ img {
 
   .mobile-menu-overlay.is-open {
     opacity: 1;
-    pointer-events: auto;
+    pointer-events: none;
   }
 
   .mobile-menu-panel {

@@ -23,12 +23,6 @@ export function Header() {
       return undefined;
     }
 
-    const previousBodyOverflow = document.body.style.overflow;
-    const previousHtmlOverflow = document.documentElement.style.overflow;
-
-    document.documentElement.style.overflow = 'hidden';
-    document.body.style.overflow = 'hidden';
-
     const handleKeyDown = (event) => {
       if (event.key === 'Escape') {
         setIsMenuOpen(false);
@@ -38,8 +32,6 @@ export function Header() {
     window.addEventListener('keydown', handleKeyDown);
 
     return () => {
-      document.documentElement.style.overflow = previousHtmlOverflow;
-      document.body.style.overflow = previousBodyOverflow;
       window.removeEventListener('keydown', handleKeyDown);
     };
   }, [isMenuOpen]);
@@ -118,7 +110,8 @@ export function Header() {
         className={`mobile-menu-overlay ${isMenuOpen ? 'is-open' : ''}`}
         type="button"
         aria-label="Fechar menu"
-        tabIndex={isMenuOpen ? 0 : -1}
+        aria-hidden="true"
+        tabIndex={-1}
         onClick={closeMenu}
       />
 
