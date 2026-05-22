@@ -32,7 +32,12 @@ export function Orders() {
           </div>
         </div>
 
-        <a className="btn btn-primary" href={whatsappLink} target="_blank" rel="noreferrer">
+        <a
+          className="btn btn-primary"
+          href={whatsappLink}
+          target="_blank"
+          rel="noreferrer"
+        >
           Solicitar orçamento
           <Send size={18} />
         </a>

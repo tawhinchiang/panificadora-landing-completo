@@ -22,7 +22,7 @@ export function Gallery() {
                 loading="lazy"
                 decoding="async"
                 width="960"
-                height="1440"
+                height="960"
               />
               <figcaption className="gallery-caption">
                 <span>{String(index + 1).padStart(2, '0')}</span>

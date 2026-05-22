@@ -52,7 +52,8 @@ export function Footer() {
 
       <div className="footer-bottom">
         <span>
-          © {new Date().getFullYear()} {businessInfo.nome}. Todos os direitos reservados.
+          © {new Date().getFullYear()} {businessInfo.nome}. Todos os direitos
+          reservados.
         </span>
       </div>
     </footer>

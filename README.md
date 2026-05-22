@@ -119,22 +119,27 @@ Adicione as imagens reais em:
 public/imagens/
 ```
 
-Nomes esperados atualmente pelo layout:
+Nomes usados atualmente pelo layout:
 
 ```txt
-hero.jpg
-paes.jpg
-bolos.jpg
-salgados.jpg
-doces.jpg
-cafe.jpg
-encomendas.jpg
-galeria-1.jpg
-galeria-2.jpg
-galeria-3.jpg
-galeria-4.jpg
-galeria-5.jpg
-galeria-6.jpg
+bolo_mandioca.png
+bolo_morango_chocolate.png
+bolo_ninho_doce.png
+bolo_ninho_morango.png
+ambiente-1.jpeg
+ambiente-2.jpeg
+ambiente-3.jpeg
+ambiente-4.jpeg
+churros_morango.png
+doces.png
+faxada_panifi.jpeg
+rosca_coco.png
+salgado_salsicha.png
+sonho_goiaba_2.png
+sonho_nata.png
+torta_banoffe_2.png
+torta_limao.png
+torta_morango.png
 ```
 
 Se esses arquivos nao existirem, a pagina continua funcionando, mas algumas areas visuais ficarao sem imagem.

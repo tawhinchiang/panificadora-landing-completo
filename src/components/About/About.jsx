@@ -1,10 +1,30 @@
 import { Heart, Sparkles, Wheat } from 'lucide-react';
+import { environmentImages } from '../../data/gallery';
 
 export function About() {
   return (
     <section id="sobre" className="section about-section deferred-section">
       <div className="container about-grid">
-        <div className="about-image" aria-hidden="true" />
+        <div
+          className="about-image-gallery"
+          aria-label="Fotos do ambiente da panificadora"
+        >
+          {environmentImages.map((image, index) => (
+            <figure
+              className={index === 0 ? 'is-featured' : ''}
+              key={image.imagem}
+            >
+              <img
+                src={image.imagem}
+                alt={image.alt}
+                loading="lazy"
+                decoding="async"
+                width="720"
+                height="720"
+              />
+            </figure>
+          ))}
+        </div>
 
         <div className="about-text">
           <span className="section-kicker">Sobre nós</span>

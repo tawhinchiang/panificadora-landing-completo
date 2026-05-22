@@ -17,7 +17,12 @@ export function Hero() {
           <p>{businessInfo.subtitulo}</p>
 
           <div className="hero-actions">
-            <a className="btn btn-primary" href={whatsappLink} target="_blank" rel="noreferrer">
+            <a
+              className="btn btn-primary"
+              href={whatsappLink}
+              target="_blank"
+              rel="noreferrer"
+            >
               Fazer pedido no WhatsApp
               <ArrowRight size={18} />
             </a>
@@ -38,7 +43,11 @@ export function Hero() {
           </div>
         </div>
 
-        <div className="hero-image" role="img" aria-label="Mesa de café da manhã com produtos da panificadora">
+        <div
+          className="hero-image"
+          role="img"
+          aria-label="Ambiente acolhedor da panificadora"
+        >
           <div className="hero-image-card">
             <span>🥐</span>
             <strong>Fresquinho todo dia</strong>

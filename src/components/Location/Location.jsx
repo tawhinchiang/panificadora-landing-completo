@@ -23,14 +23,18 @@ export function Location() {
               <span>{businessInfo.horario}</span>
             </p>
             <p>
-             
               <a href={businessInfo.instagram} target="_blank" rel="noreferrer">
                 Acompanhar no Instagram
               </a>
             </p>
           </div>
 
-          <a className="btn btn-secondary" href={businessInfo.googleMapsUrl} target="_blank" rel="noreferrer">
+          <a
+            className="btn btn-secondary"
+            href={businessInfo.googleMapsUrl}
+            target="_blank"
+            rel="noreferrer"
+          >
             Abrir rota
             <Navigation size={18} />
           </a>

@@ -1,94 +1,22 @@
 import { useEffect, useRef, useState } from 'react';
 import { ChevronDown } from 'lucide-react';
 import { businessInfo } from '../../data/businessInfo';
+import { introImages } from '../../data/gallery';
 
 export function VideoIntro() {
   const sectionRef = useRef(null);
-  const videoRefs = useRef([]);
-  const activeVideoRef = useRef(0);
-  const transitionRef = useRef(false);
-  const resetTimerRef = useRef(0);
-  const [activeVideo, setActiveVideo] = useState(0);
-  const [mediaMode, setMediaMode] = useState('static');
+  const [activeImage, setActiveImage] = useState(0);
 
   useEffect(() => {
-    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
-    const saveData = connection?.saveData;
-    const slowConnection = ['slow-2g', '2g', '3g'].includes(connection?.effectiveType);
-
-    if (reducedMotion || saveData || slowConnection) {
-      setMediaMode('static');
-      return;
-    }
-
-    setMediaMode('video');
-  }, []);
-
-  const playVideo = (video) => {
-    if (!video) {
-      return;
-    }
-
-    const playPromise = video.play();
-
-    if (playPromise?.catch) {
-      playPromise.catch(() => {});
-    }
-  };
-
-  const swapVideos = () => {
-    if (transitionRef.current) {
-      return;
-    }
-
-    const currentIndex = activeVideoRef.current;
-    const nextIndex = currentIndex === 0 ? 1 : 0;
-    const currentVideo = videoRefs.current[currentIndex];
-    const nextVideo = videoRefs.current[nextIndex];
-
-    if (!currentVideo || !nextVideo) {
-      return;
-    }
-
-    transitionRef.current = true;
-
-    try {
-      nextVideo.currentTime = 0;
-    } catch {
-      // Some browsers may briefly block seeking before metadata is ready.
-    }
-
-    playVideo(nextVideo);
-    activeVideoRef.current = nextIndex;
-    setActiveVideo(nextIndex);
-
-    window.clearTimeout(resetTimerRef.current);
-    resetTimerRef.current = window.setTimeout(() => {
-      currentVideo.pause();
-
-      try {
-        currentVideo.currentTime = 0;
-      } catch {
-        // Safe no-op when the browser is still updating video state.
-      }
-
-      transitionRef.current = false;
-    }, 520);
-  };
-
-  useEffect(() => {
-    if (mediaMode !== 'video') {
-      return undefined;
-    }
-
     const section = sectionRef.current;
 
     if (!section) {
       return undefined;
     }
 
-    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const reducedMotion = window.matchMedia(
+      '(prefers-reduced-motion: reduce)',
+    ).matches;
 
     if (reducedMotion) {
       section.style.setProperty('--scroll-progress', '0');
@@ -128,92 +56,49 @@ export function VideoIntro() {
       window.removeEventListener('scroll', requestUpdate);
       window.removeEventListener('resize', requestUpdate);
     };
-  }, [mediaMode]);
+  }, []);
 
   useEffect(() => {
-    if (mediaMode !== 'video') {
+    if (introImages.length <= 1) {
       return undefined;
     }
 
-    const primaryVideo = videoRefs.current[0];
-    const secondaryVideo = videoRefs.current[1];
+    const reducedMotion = window.matchMedia(
+      '(prefers-reduced-motion: reduce)',
+    ).matches;
 
-    if (!primaryVideo || !secondaryVideo) {
+    if (reducedMotion) {
       return undefined;
     }
 
-    activeVideoRef.current = 0;
-    setActiveVideo(0);
-    transitionRef.current = false;
+    const interval = window.setInterval(() => {
+      setActiveImage((currentIndex) =>
+        currentIndex === introImages.length - 1 ? 0 : currentIndex + 1,
+      );
+    }, 4200);
 
-    secondaryVideo.pause();
-
-    try {
-      secondaryVideo.currentTime = 0;
-    } catch {
-      // Ignore initial seek race conditions.
-    }
-
-    playVideo(primaryVideo);
-
-    return () => {
-      window.clearTimeout(resetTimerRef.current);
-      primaryVideo.pause();
-      secondaryVideo.pause();
-    };
-  }, [mediaMode]);
-
-  const handleVideoProgress = (index, event) => {
-    if (index !== activeVideoRef.current || transitionRef.current) {
-      return;
-    }
-
-    const { currentTime, duration } = event.currentTarget;
-
-    if (!Number.isFinite(duration) || duration <= 0) {
-      return;
-    }
-
-    if (duration - currentTime <= 0.42) {
-      swapVideos();
-    }
-  };
+    return () => window.clearInterval(interval);
+  }, []);
 
   return (
     <section id="inicio" ref={sectionRef} className="video-intro">
       <div className="video-intro-sticky">
-        {mediaMode === 'video' ? (
-          [0, 1].map((index) => (
-            <video
-              key={index}
-              ref={(element) => {
-                videoRefs.current[index] = element;
-              }}
-              className={`video-intro-media ${activeVideo === index ? 'is-active' : ''}`}
-              autoPlay={index === 0}
-              muted
-              playsInline
-              preload={index === 0 ? 'metadata' : 'none'}
-              poster="/imagens/optimized/breakfast-1600.jpg"
-              aria-hidden="true"
-              onTimeUpdate={(event) => handleVideoProgress(index, event)}
-              onEnded={swapVideos}
-            >
-              <source src="/imagens/croaassaint_video_comprimido.webm" type="video/webm" />
-            </video>
-          ))
-        ) : (
+        {introImages.map((item, index) => (
           <img
-            className="video-intro-media video-intro-poster is-active"
-            src="/imagens/optimized/breakfast-1600.jpg"
+            className={`video-intro-media ${
+              activeImage === index ? 'is-active' : ''
+            }`}
+            src={item.imagem}
             alt=""
+            key={item.imagem}
             aria-hidden="true"
-            fetchPriority="high"
+            loading={index === 0 ? 'eager' : 'lazy'}
+            fetchPriority={index === 0 ? 'high' : undefined}
             decoding="async"
             width="1600"
-            height="2400"
+            height="1600"
           />
-        )}
+        ))}
 
         <div className="video-intro-overlay" aria-hidden="true" />
         <div className="video-intro-glow" aria-hidden="true" />
