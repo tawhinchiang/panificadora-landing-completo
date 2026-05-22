@@ -23,8 +23,10 @@ export function Header() {
       return undefined;
     }
 
-    const previousOverflow = document.body.style.overflow;
+    const previousBodyOverflow = document.body.style.overflow;
+    const previousHtmlOverflow = document.documentElement.style.overflow;
 
+    document.documentElement.style.overflow = 'hidden';
     document.body.style.overflow = 'hidden';
 
     const handleKeyDown = (event) => {
@@ -36,7 +38,8 @@ export function Header() {
     window.addEventListener('keydown', handleKeyDown);
 
     return () => {
-      document.body.style.overflow = previousOverflow;
+      document.documentElement.style.overflow = previousHtmlOverflow;
+      document.body.style.overflow = previousBodyOverflow;
       window.removeEventListener('keydown', handleKeyDown);
     };
   }, [isMenuOpen]);
@@ -57,6 +60,11 @@ export function Header() {
     };
   }, []);
 
+  const openMenu = () => {
+    document.documentElement.scrollLeft = 0;
+    document.body.scrollLeft = 0;
+    setIsMenuOpen(true);
+  };
   const closeMenu = () => setIsMenuOpen(false);
 
   return (
@@ -100,7 +108,7 @@ export function Header() {
           aria-label="Abrir menu"
           aria-controls="mobile-menu-panel"
           aria-expanded={isMenuOpen}
-          onClick={() => setIsMenuOpen(true)}
+          onClick={openMenu}
         >
           <Menu size={24} />
         </button>

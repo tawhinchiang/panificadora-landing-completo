@@ -1,11 +1,20 @@
-import { ArrowRight, Clock, MapPin } from 'lucide-react';
+import { ArrowRight, Clock, Clock3, MapPin, Wheat } from 'lucide-react';
 import { businessInfo } from '../../data/businessInfo';
 import { buildWhatsappLink } from '../../utils/buildWhatsappLink';
 
 const heroStats = [
-  { value: '7h', label: 'produção começando cedo' },
-  { value: '20h', label: 'atendimento até a noite' },
-  { value: '42', label: 'pedidos pelo WhatsApp' },
+  {
+    value: '7h',
+    title: 'Primeira fornada',
+    label: 'produção fresca logo cedo',
+    Icon: Wheat,
+  },
+  {
+    value: '20h',
+    title: 'Atendimento estendido',
+    label: 'para pedir com calma até a noite',
+    Icon: Clock3,
+  },
 ];
 
 export function Hero() {
@@ -53,10 +62,16 @@ export function Hero() {
 
           <div className="hero-stats" aria-label="Destaques da panificadora">
             {heroStats.map((stat) => (
-              <span key={stat.label}>
+              <article className="hero-stat-card" key={stat.title}>
+                <span className="hero-stat-icon" aria-hidden="true">
+                  <stat.Icon size={19} strokeWidth={2.2} />
+                </span>
                 <strong>{stat.value}</strong>
-                {stat.label}
-              </span>
+                <span className="hero-stat-copy">
+                  <span>{stat.title}</span>
+                  {stat.label}
+                </span>
+              </article>
             ))}
           </div>
         </div>

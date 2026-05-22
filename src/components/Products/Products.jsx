@@ -7,7 +7,6 @@ import { buildWhatsappLink } from '../../utils/buildWhatsappLink';
 function ProductImageCarousel({ product }) {
   const [activeIndex, setActiveIndex] = useState(0);
   const hasCarousel = product.imagens.length > 1;
-  const activeImage = product.imagens[activeIndex];
 
   useEffect(() => {
     if (!hasCarousel) {
@@ -36,16 +35,19 @@ function ProductImageCarousel({ product }) {
       <span className="product-badge">{product.categoria}</span>
 
       <div className="product-carousel">
-        <img
-          className="is-active"
-          src={activeImage.src}
-          alt={activeImage.alt}
-          key={activeImage.src}
-          loading="lazy"
-          decoding="async"
-          width="900"
-          height="900"
-        />
+        {product.imagens.map((image, index) => (
+          <img
+            className={index === activeIndex ? 'is-active' : ''}
+            src={image.src}
+            alt={index === activeIndex ? image.alt : ''}
+            aria-hidden={index === activeIndex ? undefined : 'true'}
+            key={image.src}
+            loading="lazy"
+            decoding="async"
+            width="900"
+            height="900"
+          />
+        ))}
       </div>
 
       {hasCarousel ? (
