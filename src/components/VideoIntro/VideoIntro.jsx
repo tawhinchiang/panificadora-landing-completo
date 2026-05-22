@@ -5,7 +5,10 @@ import { introImages } from '../../data/gallery';
 
 export function VideoIntro() {
   const sectionRef = useRef(null);
-  const [activeImage, setActiveImage] = useState(0);
+  const [imageLayers, setImageLayers] = useState([
+    { id: 0, imageIndex: 0, isActive: true },
+  ]);
+  const activeLayer = imageLayers.find((layer) => layer.isActive) ?? imageLayers[0];
 
   useEffect(() => {
     const section = sectionRef.current;
@@ -72,46 +75,89 @@ export function VideoIntro() {
     }
 
     const interval = window.setInterval(() => {
-      setActiveImage((currentIndex) =>
-        currentIndex === introImages.length - 1 ? 0 : currentIndex + 1,
-      );
+      setImageLayers((currentLayers) => {
+        const currentActiveLayer =
+          currentLayers.find((layer) => layer.isActive) ?? currentLayers[0];
+        const nextImageIndex =
+          currentActiveLayer.imageIndex === introImages.length - 1
+            ? 0
+            : currentActiveLayer.imageIndex + 1;
+
+        return [
+          ...currentLayers.map((layer) => ({
+            ...layer,
+            isActive: false,
+          })),
+          {
+            id: currentActiveLayer.id + 1,
+            imageIndex: nextImageIndex,
+            isActive: true,
+          },
+        ].slice(-2);
+      });
     }, 4200);
 
     return () => window.clearInterval(interval);
   }, []);
 
+  useEffect(() => {
+    if (imageLayers.length <= 1) {
+      return undefined;
+    }
+
+    const cleanupTimer = window.setTimeout(() => {
+      setImageLayers((currentLayers) =>
+        currentLayers.filter((layer) => layer.isActive),
+      );
+    }, 1300);
+
+    return () => window.clearTimeout(cleanupTimer);
+  }, [imageLayers]);
+
   return (
     <section id="inicio" ref={sectionRef} className="video-intro">
       <div className="video-intro-sticky">
-        {introImages.map((item, index) => (
-          <img
-            className={`video-intro-media ${
-              activeImage === index ? 'is-active' : ''
-            }`}
-            src={item.imagem}
-            alt=""
-            key={item.imagem}
-            aria-hidden="true"
-            loading={index === 0 ? 'eager' : 'lazy'}
-            fetchPriority={index === 0 ? 'high' : undefined}
-            decoding="async"
-            width="1600"
-            height="1600"
-          />
-        ))}
+        {imageLayers.map((layer) => {
+          const image = introImages[layer.imageIndex];
+
+          return (
+            <img
+              className={`video-intro-media ${
+                layer.isActive ? 'is-active' : 'is-exiting'
+              }`}
+              src={image.imagem}
+              alt=""
+              key={layer.id}
+              aria-hidden="true"
+              loading={layer.imageIndex === 0 ? 'eager' : 'lazy'}
+              fetchPriority={activeLayer?.id === layer.id ? 'high' : undefined}
+              decoding="async"
+              width="900"
+              height="900"
+            />
+          );
+        })}
 
         <div className="video-intro-overlay" aria-hidden="true" />
         <div className="video-intro-glow" aria-hidden="true" />
 
         <div className="container video-intro-content">
-          <div className="video-intro-copy">
-            <span className="section-kicker">Experiência artesanal</span>
-            <strong className="video-intro-brand">{businessInfo.nome}</strong>
-            <h2>{businessInfo.slogan}</h2>
-            <p>{businessInfo.subtitulo}</p>
-            <a className="video-intro-link" href="#hero">
-              Entrar no cardápio
-            </a>
+          <div className="video-intro-layout">
+            <div className="video-intro-copy">
+              <span className="section-kicker">Experiência artesanal</span>
+              <strong className="video-intro-brand">
+                {businessInfo.nome}
+              </strong>
+              <h2>{businessInfo.slogan}</h2>
+              <p>
+                Uma vitrine de bairro com produção diária, atendimento próximo e
+                receitas feitas para acompanhar a rotina da família.
+              </p>
+              <a className="video-intro-link" href="#hero">
+                Entrar no cardápio
+              </a>
+            </div>
+
           </div>
 
           <div className="video-intro-scroll" aria-hidden="true">

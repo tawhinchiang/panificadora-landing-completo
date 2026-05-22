@@ -6,19 +6,19 @@ export const products = [
       'Bolos caseiros e recheados para o dia a dia, café da tarde e encomendas especiais.',
     imagens: [
       {
-        src: '/imagens/bolo_morango_chocolate.png',
+        src: '/imagens/optimized/site/bolo_morango_chocolate.jpg',
         alt: 'Bolo de morango com chocolate',
       },
       {
-        src: '/imagens/bolo_mandioca.png',
+        src: '/imagens/optimized/site/bolo_mandioca.jpg',
         alt: 'Bolo de mandioca',
       },
       {
-        src: '/imagens/bolo_ninho_doce.png',
+        src: '/imagens/optimized/site/bolo_ninho_doce.jpg',
         alt: 'Bolo de leite Ninho com doce',
       },
       {
-        src: '/imagens/bolo_ninho_morango.png',
+        src: '/imagens/optimized/site/bolo_ninho_morango.jpg',
         alt: 'Bolo de leite Ninho com morango',
       },
     ],
@@ -32,15 +32,15 @@ export const products = [
       'Tortas fresquinhas com sabores clássicos e queridinhos para dividir ou encomendar.',
     imagens: [
       {
-        src: '/imagens/torta_morango.png',
+        src: '/imagens/optimized/site/torta_morango.jpg',
         alt: 'Torta de morango',
       },
       {
-        src: '/imagens/torta_limao.png',
+        src: '/imagens/optimized/site/torta_limao.jpg',
         alt: 'Torta de limão',
       },
       {
-        src: '/imagens/torta_banoffe_2.png',
+        src: '/imagens/optimized/site/torta_banoffe_2.jpg',
         alt: 'Torta banoffee',
       },
     ],
@@ -54,19 +54,19 @@ export const products = [
       'Doces de vitrine, sonhos recheados e opções açucaradas para adoçar a rotina.',
     imagens: [
       {
-        src: '/imagens/sonho_nata.png',
+        src: '/imagens/optimized/site/sonho_nata.jpg',
         alt: 'Sonho recheado com nata',
       },
       {
-        src: '/imagens/sonho_goiaba_2.png',
+        src: '/imagens/optimized/site/sonho_goiaba_2.jpg',
         alt: 'Sonho recheado com goiabada',
       },
       {
-        src: '/imagens/churros_morango.png',
+        src: '/imagens/optimized/site/churros_morango.jpg',
         alt: 'Churros com morango',
       },
       {
-        src: '/imagens/doces.png',
+        src: '/imagens/optimized/site/doces.jpg',
         alt: 'Doces variados da panificadora',
       },
     ],
@@ -80,7 +80,7 @@ export const products = [
       'Salgados preparados para consumo no local, retirada ou encomendas rápidas.',
     imagens: [
       {
-        src: '/imagens/salgado_salsicha.png',
+        src: '/imagens/optimized/site/salgado_salsicha.jpg',
         alt: 'Salgado de salsicha',
       },
     ],
@@ -94,7 +94,7 @@ export const products = [
       'Roscas macias e bem servidas, perfeitas para acompanhar o café da manhã ou da tarde.',
     imagens: [
       {
-        src: '/imagens/rosca_coco.png',
+        src: '/imagens/optimized/site/rosca_coco.jpg',
         alt: 'Rosca de coco',
       },
     ],
